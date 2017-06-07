@@ -1,0 +1,44 @@
+
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1496825131430'); /* IE9*/
+  src: url('iconfont.eot?t=1496825131430#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1496825131430') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1496825131430') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1496825131430#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+[class*=" el-icon-iconfont-"], [class^=el-icon-iconfont-] {
+  font-family: "iconfont" !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-iconfont-font:before { content: "\e6e2"; }
+
+.el-icon-iconfont-aligncenter:before { content: "\e600"; }
+
+.el-icon-iconfont-alignleft:before { content: "\e602"; }
+
+.el-icon-iconfont-alignright:before { content: "\e606"; }
+
+.el-icon-iconfont-bold:before { content: "\e609"; }
+
+.el-icon-iconfont-indent:before { content: "\e618"; }
+
+.el-icon-iconfont-italic:before { content: "\e619"; }
+
+.el-icon-iconfont-outdent:before { content: "\e620"; }
+
+.el-icon-iconfont-strike:before { content: "\e62d"; }
+
+.el-icon-iconfont-sub:before { content: "\e62e"; }
+
+.el-icon-iconfont-sup:before { content: "\e62f"; }
+
+.el-icon-iconfont-underline:before { content: "\e632"; }
+
+.el-icon-iconfont-font-size:before { content: "\e6e3"; }
+
+.el-icon-iconfont-bg-color:before { content: "\e678"; }
+
+.el-icon-iconfont-color:before { content: "\e601"; }

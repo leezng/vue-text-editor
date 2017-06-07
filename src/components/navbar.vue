@@ -2,11 +2,17 @@
   <ul class="navbar">
     <li v-for="(item, attr) in config">
       <template v-if="!item.isLocal">
-        <el-button @click="setStyle(attr)" size="small">{{ item.text }}</el-button>
+        <el-tooltip class="item" effect="dark" :content="item.text" placement="bottom">
+          <el-button @click="setStyle(attr)" :icon="item.icon"></el-button>
+        </el-tooltip>
       </template>
 
       <template v-else-if="attr === 'foreColor' || attr === 'backColor'">
-        <li><el-button @click="beforeExecColor(attr)" size="small">{{ item.text }}</el-button></li>
+        <li>
+          <el-tooltip class="item" effect="dark" :content="item.text" placement="bottom">
+            <el-button @click="beforeExecColor(attr)" :icon="item.icon"></el-button>
+          </el-tooltip>
+        </li>
         <compact-color-picker
           v-model="$data[`${attr}`]"
           :class="{ 'hidden': $data[`${attr}Hidden`], 'color-picker': true }"
@@ -15,9 +21,12 @@
 
       <template v-else>
         <el-dropdown @command="setStyle(attr, $event)" @visible-change="beforeExecFontSize" trigger="click">
-          <el-button size="small">
-            {{ item.text }}<i class="el-icon-caret-bottom el-icon--right"></i>
-          </el-button>
+          <el-tooltip class="item" effect="dark" :content="item.text" placement="bottom">
+            <el-button :icon="item.icon">
+              <i class="el-icon-caret-bottom el-icon--right"></i>
+            </el-button>
+          </el-tooltip>
+
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item
               v-for="option in item.options"
@@ -27,6 +36,7 @@
               {{ option }}
             </el-dropdown-item>
           </el-dropdown-menu>
+
         </el-dropdown>
       </template>
     </li>
@@ -130,6 +140,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  @import "~@/assets/lib/iconfont/iconfont.css";
+
   .list-unstyled {
     padding-left: 0;
     list-style: none;
