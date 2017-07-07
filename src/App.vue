@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="vue-text-editor">
     <navbar></navbar>
     <editor></editor>
   </div>
@@ -10,7 +10,7 @@ import Navbar from './components/navbar'
 import Editor from './components/editor'
 
 export default {
-  name: 'app',
+  name: 'VueTextEditor',
   components: {
     Navbar,
     Editor

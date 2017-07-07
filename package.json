@@ -1,6 +1,6 @@
 {
-  "name": "vue-quill-editor",
-  "version": "1.0.0",
+  "name": "vue-text-editor",
+  "version": "0.1.0",
   "description": "A Vue.js project",
   "author": "leezng",
   "private": true,

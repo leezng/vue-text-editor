@@ -17,6 +17,8 @@ Vue.use(Tooltip)
 
 Vue.config.productionTip = false
 
+Vue.component(App.name, App)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

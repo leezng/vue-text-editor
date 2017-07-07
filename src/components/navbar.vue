@@ -142,6 +142,15 @@ export default {
 <style lang="less" scoped>
   @import "~@/assets/lib/iconfont/iconfont.css";
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .hidden {
+    display: none;
+  }
+
   .list-unstyled {
     padding-left: 0;
     list-style: none;
