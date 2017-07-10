@@ -1,10 +1,22 @@
 <template>
-  <div class="content" contenteditable></div>
+  <div
+    class="content"
+    @input="handleInput"
+    contenteditable
+  >
+    {{ value }}
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'editor'
+  props: ['value']
+  name: 'editor',
+  methods: {
+    handleInput (value) {
+      this.$emit('change', value)
+    }
+  }
 }
 </script>
 

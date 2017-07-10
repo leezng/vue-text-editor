@@ -1,7 +1,7 @@
 <template>
   <div class="vue-text-editor">
-    <navbar></navbar>
-    <editor></editor>
+    <navbar @change="change"></navbar>
+    <editor :value="content" @change="change"></editor>
   </div>
 </template>
 
@@ -11,13 +11,23 @@ import Editor from './components/editor'
 
 export default {
   name: 'VueTextEditor',
+  props: ['value']
   components: {
     Navbar,
     Editor
+  },
+  data () {
+    return {
+      content: this.value
+    }
+  },
+  methods: {
+    change (value) {
+      if (value) {
+        this.data = value
+      }
+      this.$emit('change', this.data)
+    }
   }
 }
 </script>
-
-<style>
-@import "~@/assets/less/basic.less"
-</style>
