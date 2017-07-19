@@ -1,32 +1,18 @@
 <template>
-  <div class="vue-text-editor">
-    <navbar @change="change"></navbar>
-    <editor :value="content" @change="change"></editor>
-  </div>
+  <main-component :value="'text'" @change="handleChange"></main-component>
 </template>
 
 <script>
-import Navbar from './components/navbar'
-import Editor from './components/editor'
+import MainComponent from './components/main'
 
 export default {
   name: 'VueTextEditor',
-  props: ['value'],
   components: {
-    Navbar,
-    Editor
-  },
-  data () {
-    return {
-      content: this.value
-    }
+    MainComponent
   },
   methods: {
-    change (value) {
-      if (value) {
-        this.data = value
-      }
-      this.$emit('change', this.data)
+    handleChange (newVal) {
+      console.log(newVal)
     }
   }
 }

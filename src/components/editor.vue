@@ -13,8 +13,8 @@ export default {
   props: ['value'],
   name: 'editor',
   methods: {
-    handleInput (value) {
-      this.$emit('change', value)
+    handleInput (e) {
+      this.$emit('change', e.target.innerHTML)
     }
   }
 }

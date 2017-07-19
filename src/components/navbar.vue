@@ -112,7 +112,6 @@ export default {
         document.execCommand(attr, false, param)
       }
       this.selectedRange = ''
-      this.$emit('change')
     },
     fontSizeLocal (range, param = '') {
       document.execCommand('fontSize', false, 2)
