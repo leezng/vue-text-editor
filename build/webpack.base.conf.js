@@ -8,6 +8,7 @@ function resolve (dir) {
 }
 
 module.exports = {
+  context: resolve('.'),
   entry: {
     app: './src/main.js'
   },
@@ -19,7 +20,9 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
+    // 自动解析确定的扩展: import A from './js/A' (引入 A.js)
     extensions: ['.js', '.vue', '.json'],
+    // 设置别名: import main from '@/main' (引入 src 下的 main.js)
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src')
@@ -30,7 +33,7 @@ module.exports = {
       {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
-        enforce: 'pre',
+        enforce: 'pre', // 加载器的执行顺序, 不设置为正常执行, 可选值 'pre|post' 前|后
         include: [resolve('src'), resolve('test')],
         options: {
           formatter: require('eslint-friendly-formatter')

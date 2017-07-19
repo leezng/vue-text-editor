@@ -7,7 +7,7 @@ import {
   Tooltip
 } from 'element-ui'
 import App from './App'
-import 'element-ui/lib/theme-default/index.css'
+// import 'element-ui/lib/theme-default/index.css'
 
 Vue.use(Button)
 Vue.use(Dropdown)

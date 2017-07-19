@@ -11,7 +11,7 @@ import Editor from './components/editor'
 
 export default {
   name: 'VueTextEditor',
-  props: ['value']
+  props: ['value'],
   components: {
     Navbar,
     Editor
