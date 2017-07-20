@@ -36,8 +36,8 @@ exports.cssLoaders = function (options) {
     // (which is the case during production build)
     if (options.extract) {
       return ExtractTextPlugin.extract({
-        use: loaders,
-        fallback: 'vue-style-loader'
+        use: loaders, // (必填), 加载器 (Loader), 被用于将资源转换成一个输出的 CSS 模块
+        fallback: 'vue-style-loader' // 加载器 (例如 'style-loader'), 应用于当 css 没有被提取(也就是一个额外的 chunk，当 allChunks: false)
       })
     } else {
       return ['vue-style-loader'].concat(loaders)

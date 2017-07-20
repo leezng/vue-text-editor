@@ -31,22 +31,37 @@ var webpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
+    // 这个插件用来定义全局变量, 在webpack打包的时候会对这些变量做替换, 下例设置了一个 process.env 的全局变量, 因此在我们的代码中, 可以通过该变量设置只在开发环境下才执行
+    // if ('development' === process.env.NODE_ENV) {
+    //  开发环境下的逻辑
+    // } else {
+    //  生产环境下
+    // }
     new webpack.DefinePlugin({
       'process.env': env
     }),
+    // https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
+    // 压缩优化 JS
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false
+        warnings: false // 在 UglifyJs 删除没有用到的代码时不输出警告
       },
+      // beautify: false, // 最紧凑的输出
+      // comments: false, // 删除所有的注释
       sourceMap: true
     }),
-    // extract css into its own file
+    // https://github.com/webpack-contrib/extract-text-webpack-plugin
+    // http://www.css88.com/doc/webpack2/plugins/extract-text-webpack-plugin/
+    // 它会将所有的 入口chunk (entry chunks) 中的 require("style.css") 移动到分开的 css 文件. 因此, 样式不再内联到 js 里面, 但会放到一个单独的 css 包文件 (styles.css)当中. 如果你的样式文件大小较大, 这会更快, 因为样式文件会跟 js 包并行加载.
     new ExtractTextPlugin({
+      // [name] chunk 的名称 [id] chunk 的数量 [contenthash] 提取文件根据内容生成的哈希
       // filename: utils.assetsPath('css/[name].[contenthash].css')
-      filename: utils.assetsPath('css/[name].css')
+      filename: utils.assetsPath('css/[name].css') // (必填) 生成文件的文件名
+      // allChunks {Boolean} // 向所有额外的 chunk 提取（默认只提取初始加载模块）
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
+    // 压缩提取出的css, 并解决 ExtractTextPlugin 分离出的css重复问题(多个文件引入同一css文件)
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
         safe: true
@@ -98,8 +113,22 @@ var webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
+    ]),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../README.md'),
+        to: config.build.assetsRoot
+      }
     ])
-  ]
+  ],
+  externals: {
+    vue: {
+      commonjs: 'vue',
+      commonjs2: 'vue',
+      amd: 'vue',
+      global: 'Vue',
+    }
+  }
 })
 
 if (config.build.productionGzip) {
