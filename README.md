@@ -24,17 +24,17 @@ export default {
 }
 ```
 
-## props
+## Props
 
-| Attribute | Introduction | Type | Default |
+| Attribute | Description | Type | Default |
 |---------- |-------- |---------- | ---------- |
-| value  | You can set default value | string | - |
+| value  | binding value | string | - |
 
 ## Events
 
-| Event Name | Introduction | Callback |
+| Event Name | Description | Parameters |
 |---------- |-------- |---------- |
-| change  | Base on value changed | newValue |
+| change  | emit when value has changed | newValue |
 
 Then in your vue template somewhere:
 
