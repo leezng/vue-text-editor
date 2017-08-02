@@ -1,4 +1,4 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 import {
   Button,
   Dropdown,
@@ -9,13 +9,12 @@ import {
 import 'element-ui/lib/theme-default/index.css'
 import MainComponent from './components/main'
 
-Vue.use(Button)
-Vue.use(Dropdown)
-Vue.use(DropdownMenu)
-Vue.use(DropdownItem)
-Vue.use(Tooltip)
-
 const install = function (Vue) {
+  Vue.use(Button)
+  Vue.use(Dropdown)
+  Vue.use(DropdownMenu)
+  Vue.use(DropdownItem)
+  Vue.use(Tooltip)
   Vue.component(MainComponent.name, MainComponent)
 }
 

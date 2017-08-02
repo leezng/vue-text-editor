@@ -122,16 +122,14 @@ var webpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../README.md'),
         to: config.build.assetsRoot
       }
+    ]),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../package.json'),
+        to: config.build.assetsRoot
+      }
     ])
-  ],
-  externals: {
-    vue: {
-      commonjs: 'vue',
-      commonjs2: 'vue',
-      amd: 'vue',
-      global: 'Vue',
-    }
-  }
+  ]
 })
 
 if (config.build.productionGzip) {

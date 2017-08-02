@@ -32,7 +32,7 @@ export default {
       icon: 'iconfont-bg-color'
     }, {
       label: '字体',
-      value: 'justifyLeft',
+      value: 'fontName',
       isLocal: true,
       icon: 'iconfont-font',
       options: [ 'Microsoft Yahei', 'Helvetica', 'Arial', 'sans-serif' ]

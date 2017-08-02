@@ -1,7 +1,7 @@
 <template>
   <div class="vue-text-editor">
     <navbar
-      :user-config="userConfig"
+      :user-config="config"
       @change="handleChange"
     ></navbar>
     <editor
@@ -17,7 +17,7 @@ import Editor from './editor'
 
 export default {
   name: 'VueTextEditor',
-  props: ['value', 'user-config'],
+  props: ['value', 'config'],
   components: {
     Navbar,
     Editor

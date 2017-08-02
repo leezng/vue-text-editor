@@ -11,17 +11,13 @@ A Vue.js project for quill-editor. [leezng/vue-text-editor](https://github.com/l
 npm install vue-text-editor
 ```
 
-## Usage in vue
+## Usage in entry
 
 ```js
-import VueTextEditor from 'vue-text-editor'
-import "vue-text-editor/static/css/app.css"
+import vueTextEditor from 'vue-text-editor'
+import 'vue-text-editor/static/css/app.css'
 
-export default {
-  components: {
-    VueTextEditor
-  }
-}
+Vue.use(vueTextEditor)
 ```
 
 ## Props
@@ -29,6 +25,13 @@ export default {
 | Attribute | Description | Type | Default |
 |---------- |-------- |---------- | ---------- |
 | value  | binding value | string | - |
+| config | navbar items | array | - |
+
+Here is the default config:
+
+```js
+allConfig = [ 'justifyLeft', 'justifyCenter', 'justifyRight', 'italic', 'bold', 'foreColor', 'backColor', 'fontName', 'fontSize', 'superscript', 'subscript', 'underline', 'strikeThrough', 'indent', 'outdent' ]
+```
 
 ## Events
 

@@ -1,9 +1,9 @@
 {
   "name": "vue-text-editor",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "leezng",
-  "private": true,
+  "main": "./static/js/app.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
