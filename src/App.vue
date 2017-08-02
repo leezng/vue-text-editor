@@ -5,6 +5,10 @@
 <script>
 import MainComponent from './components/main'
 
+MainComponent.install = function (Vue) {
+  Vue.component(MainComponent.name, MainComponent)
+}
+
 export default {
   name: 'VueTextEditor',
   components: {

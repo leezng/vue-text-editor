@@ -6,8 +6,8 @@ import {
   DropdownItem,
   Tooltip
 } from 'element-ui'
-import App from './App'
 import 'element-ui/lib/theme-default/index.css'
+import App from './App'
 
 Vue.use(Button)
 Vue.use(Dropdown)
