@@ -1,27 +1,30 @@
 <template>
   <ul class="navbar">
-    <li v-for="(item, attr) in config">
+    <li
+      v-for="(item, index) in config"
+      :key="index"
+    >
       <template v-if="!item.isLocal">
-        <el-tooltip class="item" effect="dark" :content="item.text" placement="bottom">
-          <el-button @click="setStyle(attr)" :icon="item.icon"></el-button>
+        <el-tooltip class="item" effect="dark" :content="item.label" placement="bottom">
+          <el-button @click="setStyle(item.value)" :icon="item.icon"></el-button>
         </el-tooltip>
       </template>
 
-      <template v-else-if="attr === 'foreColor' || attr === 'backColor'">
+      <template v-else-if="item.value === 'foreColor' || item.value === 'backColor'">
         <li>
-          <el-tooltip class="item" effect="dark" :content="item.text" placement="bottom">
-            <el-button @click="beforeExecColor(attr)" :icon="item.icon"></el-button>
+          <el-tooltip class="item" effect="dark" :content="item.label" placement="bottom">
+            <el-button @click="beforeExecColor(item.value)" :icon="item.icon"></el-button>
           </el-tooltip>
         </li>
         <compact-color-picker
-          v-model="$data[`${attr}`]"
-          :class="{ 'hidden': $data[`${attr}Hidden`], 'color-picker': true }"
+          v-model="$data[`${item.value}`]"
+          :class="{ 'hidden': $data[`${item.value}Hidden`], 'color-picker': true }"
         ></compact-color-picker>
       </template>
 
       <template v-else>
-        <el-dropdown @command="setStyle(attr, $event)" @visible-change="beforeExecFontSize" trigger="click">
-          <el-tooltip class="item" effect="dark" :content="item.text" placement="bottom">
+        <el-dropdown @command="setStyle(item.value, $event)" @visible-change="beforeExecFontSize" trigger="click">
+          <el-tooltip class="item" effect="dark" :content="item.label" placement="bottom">
             <el-button :icon="item.icon">
               <i class="el-icon-caret-bottom el-icon--right"></i>
             </el-button>
@@ -44,21 +47,30 @@
 </template>
 
 <script>
-import config from '@/config'
+import basicConfig from '@/config'
 import { Compact as CompactColorPicker } from 'vue-color'
 
 export default {
   name: 'navbar',
+  props: ['user-config'],
   components: {
     CompactColorPicker
   },
   data () {
     return {
-      config: config.navbar,
+      basicConfig: basicConfig.navbar,
       foreColorHidden: true,
       foreColor: '#333',
       backColorHidden: true,
       backColor: '#eee'
+    }
+  },
+  computed: {
+    config () {
+      const basicConfig = this.basicConfig
+      return !this.userConfig || !Array.isArray(this.userConfig)
+        ? basicConfig
+        : basicConfig.filter(item => this.userConfig.includes(item.value))
     }
   },
   methods: {

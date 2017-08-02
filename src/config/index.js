@@ -1,70 +1,71 @@
 export default {
-  navbar: {
-    justifyLeft: {
-      text: '左对齐',
+  navbar: [
+    {
+      label: '左对齐',
+      value: 'justifyLeft',
       icon: 'iconfont-alignleft'
-    },
-    justifyCenter: {
-      text: '居中',
+    }, {
+      label: '居中',
+      value: 'justifyCenter',
       icon: 'iconfont-aligncenter'
-    },
-    justifyRight: {
-      text: '右对齐',
+    }, {
+      label: '右对齐',
+      value: 'justifyRight',
       icon: 'iconfont-alignright'
-    },
-    italic: {
-      text: '斜体',
+    }, {
+      label: '斜体',
+      value: 'italic',
       icon: 'iconfont-italic'
-    },
-    bold: {
-      text: '加粗',
+    }, {
+      label: '加粗',
+      value: 'bold',
       icon: 'iconfont-bold'
-    },
-    foreColor: {
-      text: '字体颜色',
+    }, {
+      label: '字体颜色',
+      value: 'foreColor',
       isLocal: true,
       icon: 'iconfont-color'
-    },
-    backColor: {
-      text: '底纹颜色',
+    }, {
+      label: '底纹颜色',
+      value: 'backColor',
       isLocal: true,
       icon: 'iconfont-bg-color'
-    },
-    fontName: {
-      text: '字体',
+    }, {
+      label: '字体',
+      value: 'justifyLeft',
       isLocal: true,
       icon: 'iconfont-font',
       options: [ 'Microsoft Yahei', 'Helvetica', 'Arial', 'sans-serif' ]
-    },
-    fontSize: {
-      text: '字体大小',
+    }, {
+      label: '字体大小',
+      value: 'fontSize',
       isLocal: true,
       icon: 'iconfont-font-size',
       options: [ '12px', '14px', '18px', '24px', '30px', '36px' ]
-    },
-    superscript: {
-      text: '上角标',
+    }, {
+      label: '上角标',
+      value: 'superscript',
       icon: 'iconfont-sup'
-    },
-    subscript: {
-      text: '下角标',
+    }, {
+      label: '下角标',
+      value: 'subscript',
       icon: 'iconfont-sub'
-    },
-    underline: {
-      text: '下划线',
+    }, {
+      label: '下划线',
+      value: 'underline',
       icon: 'iconfont-underline'
-    },
-    strikeThrough: {
-      text: '删除线',
+    }, {
+      label: '删除线',
+      value: 'strikeThrough',
       icon: 'iconfont-strike'
-    },
-    indent: {
-      text: '增加缩进',
+    }, {
+      label: '增加缩进',
+      value: 'indent',
       icon: 'iconfont-indent'
-    },
-    outdent: {
-      text: '减少缩进',
+    }, {
+      label: '减少缩进',
+      value: 'outdent',
       icon: 'iconfont-outdent'
     }
-  }
+  ]
 }
