@@ -3,11 +3,7 @@
 </template>
 
 <script>
-import MainComponent from './components/main'
-
-MainComponent.install = function (Vue) {
-  Vue.component(MainComponent.name, MainComponent)
-}
+import MainComponent from '@/components/main'
 
 export default {
   name: 'VueTextEditor',
@@ -16,7 +12,6 @@ export default {
   },
   methods: {
     handleChange (newVal) {
-      console.log(newVal)
     }
   }
 }
