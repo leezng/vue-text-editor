@@ -30,7 +30,6 @@ var webpackConfig = merge(baseWebpackConfig, {
     path: config.build.assetsRoot,
     // filename: utils.assetsPath('js/[name].[chunkhash].js'),
     filename: utils.assetsPath('js/[name].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
     library: 'vue-text-editor',
     libraryTarget: 'umd'
   },
@@ -61,7 +60,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     new ExtractTextPlugin({
       // [name] chunk 的名称 [id] chunk 的数量 [contenthash] 提取文件根据内容生成的哈希
       // filename: utils.assetsPath('css/[name].[contenthash].css')
-      filename: utils.assetsPath('css/[name].css') // (必填) 生成文件的文件名
+      filename: utils.assetsPath('css/[name].[contenthash].css') // (必填) 生成文件的文件名
       // allChunks {Boolean} // 向所有额外的 chunk 提取（默认只提取初始加载模块）
     }),
     // Compress extracted CSS. We are using this plugin so that possible
@@ -84,16 +83,10 @@ var webpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static'),
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
-      }
-    ]),
-    new CopyWebpackPlugin([
-      {
+      }, {
         from: path.resolve(__dirname, '../README.md'),
         to: config.build.assetsRoot
-      }
-    ]),
-    new CopyWebpackPlugin([
-      {
+      }, {
         from: path.resolve(__dirname, '../package.json'),
         to: config.build.assetsRoot
       }
@@ -102,21 +95,31 @@ var webpackConfig = merge(baseWebpackConfig, {
 })
 
 if (isPlay) {
-  webpackConfig.plugins.push(
-    new HtmlWebpackPlugin({
-      filename: process.env.NODE_ENV === 'testing'
-        ? 'index.html'
-        : config.build.index,
-      template: path.resolve(__dirname, '../example/index.html'),
-      inject: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-      },
-      chunksSortMode: 'dependency'
-    })
-  )
+  webpackConfig = merge(webpackConfig, {
+    entry: {
+      app: './example/index.js'
+    },
+    output: {
+      path: path.resolve(__dirname, '../example-dist'),
+      filename: utils.assetsPath('js/[name].[chunkhash].js'),
+      chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        filename: process.env.NODE_ENV === 'testing'
+          ? 'index.html'
+          : path.resolve(__dirname, '../example-dist/index.html'),
+        template: path.resolve(__dirname, '../example/index.html'),
+        inject: true,
+        minify: {
+          removeComments: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true
+        },
+        chunksSortMode: 'dependency'
+      })
+    ]
+  })
 }
 
 if (config.build.productionGzip) {

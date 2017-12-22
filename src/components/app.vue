@@ -16,7 +16,7 @@ import Navbar from './navbar'
 import Editor from './editor'
 
 export default {
-  name: 'VueTextEditor',
+  name: 'vue-text-editor',
   props: ['value', 'config'],
   components: {
     Navbar,

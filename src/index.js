@@ -6,7 +6,7 @@ import {
   Tooltip
 } from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
-import MainComponent from './components/main'
+import App from './components/app'
 
 const install = function (Vue) {
   Vue.use(Button)
@@ -14,7 +14,7 @@ const install = function (Vue) {
   Vue.use(DropdownMenu)
   Vue.use(DropdownItem)
   Vue.use(Tooltip)
-  Vue.component(MainComponent.name, MainComponent)
+  Vue.component(App.name, App)
 }
 
 export default {

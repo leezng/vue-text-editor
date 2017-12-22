@@ -1,14 +1,13 @@
 <template>
-  <main-component :value="'text'" @change="handleChange"></main-component>
+  <vue-text-editor :value="'text'" @change="handleChange"></vue-text-editor>
 </template>
 
 <script>
-import MainComponent from '@/components/main'
+import VueTextEditor from '@/components/app'
 
 export default {
-  name: 'VueTextEditor',
   components: {
-    MainComponent
+    VueTextEditor
   },
   methods: {
     handleChange (newVal) {
