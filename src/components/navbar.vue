@@ -2,19 +2,16 @@
   <ul class="navbar">
     <li
       v-for="(item, index) in config"
+      class="navbar-button"
       :key="index"
-    >
+      :data-label="item.label">
       <template v-if="!item.isLocal">
-        <el-tooltip class="item" effect="dark" :content="item.label" placement="bottom">
-          <el-button @click="setStyle(item.value)" :icon="item.icon"></el-button>
-        </el-tooltip>
+        <el-button @click="setStyle(item.value)" :icon="item.icon"></el-button>
       </template>
 
       <template v-else-if="item.value === 'foreColor' || item.value === 'backColor'">
         <li>
-          <el-tooltip class="item" effect="dark" :content="item.label" placement="bottom">
-            <el-button @click="beforeExecColor(item.value)" :icon="item.icon"></el-button>
-          </el-tooltip>
+          <el-button @click="beforeExecColor(item.value)" :icon="item.icon"></el-button>
         </li>
         <compact-color-picker
           v-model="$data[`${item.value}`]"
@@ -24,22 +21,18 @@
 
       <template v-else>
         <el-dropdown @command="setStyle(item.value, $event)" @visible-change="beforeExecFontSize" trigger="click">
-          <el-tooltip class="item" effect="dark" :content="item.label" placement="bottom">
-            <el-button :icon="item.icon">
-              <i class="el-icon-caret-bottom el-icon--right"></i>
-            </el-button>
-          </el-tooltip>
+          <el-button :icon="item.icon">
+            <i class="el-icon-caret-bottom el-icon--right"></i>
+          </el-button>
 
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item
               v-for="option in item.options"
               :key="option"
-              :command="option"
-            >
+              :command="option">
               {{ option }}
             </el-dropdown-item>
           </el-dropdown-menu>
-
         </el-dropdown>
       </template>
     </li>
@@ -181,10 +174,24 @@ export default {
     margin-bottom: 60px;
   }
 
-  .navbar > li {
+  .navbar > .navbar-button {
     .list-unstyled;
     display: inline-block;
     position: relative;
+    &:after {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      font-size: 12px;
+      white-space: nowrap;
+      text-align: center;
+      opacity: 0;
+    }
+    &:hover:after {
+      opacity: 1;
+    }
   }
 
   .color-picker {
