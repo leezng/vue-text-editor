@@ -10,9 +10,7 @@
       </template>
 
       <template v-else-if="item.value === 'foreColor' || item.value === 'backColor'">
-        <li>
-          <el-button @click="beforeExecColor(item.value)" :icon="item.icon"></el-button>
-        </li>
+        <el-button @click="beforeExecColor(item.value)" :icon="item.icon"></el-button>
         <compact-color-picker
           v-model="$data[`${item.value}`]"
           :class="{ 'hidden': $data[`${item.value}Hidden`], 'color-picker': true }"
@@ -156,28 +154,17 @@ export default {
     display: none;
   }
 
-  .list-unstyled {
-    padding-left: 0;
-    list-style: none;
-  }
-
-  .list-inline {
-    .list-unstyled;
-    & > li {
-      display: inline-block;
-      margin-right: 10px;
-    }
-  }
-
   .navbar {
     padding: 0;
-    margin-bottom: 60px;
+    margin: 0 0 30px 0;
   }
 
   .navbar > .navbar-button {
-    .list-unstyled;
     display: inline-block;
     position: relative;
+    margin: 5px 5px 5px 0;
+    padding: 0;
+    list-style: none;
     &:after {
       content: attr(data-label);
       position: absolute;
@@ -188,6 +175,7 @@ export default {
       white-space: nowrap;
       text-align: center;
       opacity: 0;
+      z-index: 10;
     }
     &:hover:after {
       opacity: 1;

@@ -2,8 +2,7 @@
   <div
     class="content"
     @input="handleInput"
-    contenteditable
-  >
+    contenteditable>
     {{ value }}
   </div>
 </template>
@@ -22,8 +21,9 @@ export default {
 
 <style scoped>
   .content {
+    padding: 4px 8px;
     min-height: 300px;
-    width: 550px;
     border: 1px solid #ccc;
+    border-radius: 4px;
   }
 </style>

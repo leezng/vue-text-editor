@@ -1,5 +1,9 @@
 <template>
-  <vue-text-editor :value="'text'" @change="handleChange"></vue-text-editor>
+  <vue-text-editor
+    class="example"
+    :value="'text'"
+    @change="handleChange">
+  </vue-text-editor>
 </template>
 
 <script>
@@ -15,3 +19,13 @@ export default {
   }
 }
 </script>
+
+<style lang="less">
+  body {
+    margin: 0;
+  }
+  .example {
+    width: 720px;
+    margin: 15px auto;
+  }
+</style>
