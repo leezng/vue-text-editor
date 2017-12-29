@@ -1,6 +1,11 @@
 # vue-text-editor
 
-A Vue.js project for quill-editor. [leezng/vue-text-editor](https://github.com/leezng/vue-text-editor)
+A Vue.js 2.x project for textarea.
+
+## Links
+
+- [Demo](https://leezng.github.io/vue-text-editor)
+- [Github](https://github.com/leezng/vue-text-editor)
 
 ## Installation
 
